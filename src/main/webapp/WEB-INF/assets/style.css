@@ -1,0 +1,56 @@
+body {
+    background-color: white;
+    text-align: center
+}
+
+div {
+    display: inline-block;
+    background: white;
+    padding: 10px;
+    width: 800px;
+}
+
+span.landingPage {
+    display: inline-block;
+    width: 40%;
+    vertical-align: middle;
+    padding: 20px;
+}
+
+#logo {
+    border-radius: 25px 25px 0px 0px;
+    border: 3px double darkcyan;
+    height: 80px;
+    font-size: 60px;
+    font-family: Georgia;
+    font-weight: bolder;
+    color: darkblue;
+}
+
+#menu {
+    border-left: 3px double darkcyan;
+    border-right: 3px double darkcyan;
+    border-bottom: 3px double darkcyan;
+    height: 20px;
+}
+
+#footer {
+    border-radius: 0px 0px 25px 25px;
+    border: 3px double darkcyan;
+    height: 20px;
+}
+
+#main {
+    border-left: 3px double darkcyan;
+    border-right: 3px double darkcyan;
+
+}
+
+.submitBtn {
+    float: right;
+}
+
+.error {
+    color: red;
+    font-size: 11px;
+}
