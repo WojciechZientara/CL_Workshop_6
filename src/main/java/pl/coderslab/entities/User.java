@@ -5,6 +5,10 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.mindrot.jbcrypt.BCrypt;
 import javax.persistence.*;
 import javax.validation.groups.Default;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "users")
@@ -25,8 +29,15 @@ public class User {
 
     @NotBlank
     @Email
+    @Column(unique = true)
     private String email;
 
+    @OneToMany(mappedBy = "user")
+    private List<Tweet> tweets;
+
+    public User() {
+        this.tweets = new ArrayList<>();
+    }
 
     public long getId() {
         return id;

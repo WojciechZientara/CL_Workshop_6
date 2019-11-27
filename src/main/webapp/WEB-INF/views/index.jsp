@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@include file="/WEB-INF/assets/header.jsp"%>
-    <div id="main">
+    <div id="main" class="mainFrame">
         <span id="welcomeText" class="landingPage">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Fusce in convallis ipsum, et luctus massa. Nam id venenatis mi, vel volutpat nibh.

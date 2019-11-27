@@ -14,6 +14,7 @@ import pl.coderslab.entities.User;
 import pl.coderslab.repositories.UserRepository;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.Null;
 
@@ -36,7 +37,11 @@ public class HomeController {
 
         try {
             if (BCrypt.checkpw(password, user.getPassword())) {
-                response.sendRedirect(request.getContextPath() + "/success");
+                HttpSession session = request.getSession();
+                session.setAttribute("logged",true);
+                session.setAttribute("id",user.getId());
+                session.setAttribute("userName",user.getFirstName() + " " + user.getLastName());
+                response.sendRedirect(request.getContextPath() + "/app/main");
             } else {
                 throw new Exception();
             }
@@ -45,12 +50,6 @@ public class HomeController {
             return "index";
         }
         return null;
-    }
-
-    @GetMapping("/success")
-    @ResponseBody
-    public String getSukces() {
-        return "Sukces!";
     }
 
 }

@@ -3,11 +3,57 @@ body {
     text-align: center
 }
 
-div {
+div.mainFrame {
     display: inline-block;
     background: white;
     padding: 10px;
     width: 800px;
+}
+
+div#tweetForm {
+    display: inline-block;
+    background: white;
+    padding: 10px;
+    width: 80%
+}
+
+div.tweet {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    width: 70%;
+    border: 1px solid darkcyan;
+    border-radius: 25px;
+}
+
+div.myTweet {
+    vertical-align: middle;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    width: 70%;
+    border: 1px solid darkcyan;
+    border-radius: 25px;
+}
+
+div.myTweet div {
+    /*display: table-cell;*/
+    display: inline-block;
+    vertical-align: middle;
+}
+
+div.comments {
+    vertical-align: middle;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    border: 1px solid darkcyan;
+    border-radius: 25px;
+}
+
+#tweetArea {
+    width: 620px;
 }
 
 span.landingPage {
@@ -24,6 +70,10 @@ span.landingPage {
     font-size: 60px;
     font-family: Georgia;
     font-weight: bolder;
+}
+
+#logo a{
+    text-decoration: none;
     color: darkblue;
 }
 
@@ -33,6 +83,36 @@ span.landingPage {
     border-bottom: 3px double darkcyan;
     height: 20px;
 }
+
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+#menu li {
+    float: left;
+}
+
+#menu li.userProfile {
+    float: right;
+}
+
+#menu li a {
+    display: block;
+    color: darkcyan;
+    text-align: center;
+    padding: 0px 20px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#menu li a:hover {
+    color: darkblue;
+}
+
 
 #footer {
     border-radius: 0px 0px 25px 25px;

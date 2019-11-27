@@ -1,7 +1,9 @@
 package pl.coderslab.controllers;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +17,8 @@ import pl.coderslab.repositories.UserRepository;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 @Controller
 public class RegisterController {
@@ -30,12 +34,18 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String postIndex(@Valid User user, BindingResult result, Model model,
-                            HttpServletRequest request, HttpServletResponse response ) throws Exception {
-        if (result.hasErrors()) {
+                            HttpServletRequest request, HttpServletResponse response ) throws IOException {
+
+        try{
+            if (result.hasErrors()) {
+                return "register";
+            } else {
+                userRepository.save(user);
+                response.sendRedirect(request.getContextPath() + "/");
+            }
+        } catch (Exception e) {
+            model.addAttribute("userExists", true);
             return "register";
-        } else {
-            userRepository.save(user);
-            response.sendRedirect(request.getContextPath() + "/");
         }
         return null;
     }
