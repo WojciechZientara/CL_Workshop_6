@@ -8,7 +8,7 @@
 <div id="main" class="mainFrame">
 
     <div id="tweetForm">
-        Dodaj nowy Tweet: <form:form method="post" modelAttribute="tweet" >
+        Dodaj nowy Post: <form:form method="post" modelAttribute="tweet" >
         <form:hidden path="user" value="${sessionScope.id}" />
         <form:textarea path="text" rows="2" cols="70" id="tweetArea"/>
             <form:errors path="text" cssClass="error"/><br>
@@ -24,7 +24,9 @@
 
         <div class="tweet">
             <b>
-                    ${tweet.user.firstName} ${tweet.user.lastName}<br>
+                <a href="${pageContext.request.contextPath}/app/userProfile/${tweet.user.id}">
+                        ${tweet.user.firstName} ${tweet.user.lastName}
+                </a><br>
                     ${shortDate}<br>
             </b>
                 ${tweet.text}<br><br>
@@ -48,7 +50,10 @@
                     <c:set var = "fullDate" value = "${comment.created}"/>
                     <c:set var = "shortDate" value = "${fn:substring(fullDate, 0, 10)}" />
 
-                    <b>${shortDate} <br> ${comment.user.firstName} ${comment.user.lastName}</b><br>
+                    <b>${shortDate} <br>
+                        <a href="${pageContext.request.contextPath}/app/userProfile/${comment.user.id}">
+                                ${comment.user.firstName} ${comment.user.lastName}
+                        </a></b><br>
                     ${comment.text}<br><br>
 
                 </c:forEach>

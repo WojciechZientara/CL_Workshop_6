@@ -7,22 +7,21 @@
 
 <div id="main" class="mainFrame">
 
+    <c:if test="${userId != sessionScope.id}">
+        <button onclick="window.location.href =
+                '${pageContext.request.contextPath}/app/messages/send/${userId}';">
+            Wyślij Wiadomość</button><br><br>
+    </c:if>
+
     <c:forEach items="${tweets}" var="tweet">
     <c:set var = "fullDate" value = "${tweet.created}"/>
     <c:set var = "shortDate" value = "${fn:substring(fullDate, 0, 10)}" />
 
         <div class="myTweet">
             <div style="width: 80%">
-                <b> <a href="${pageContext.request.contextPath}/app/userProfile/${tweet.user.id}">
-                        ${tweet.user.firstName} ${tweet.user.lastName}
-                </a>    <br>
+                <b> ${tweet.user.firstName} ${tweet.user.lastName}<br>
                 ${shortDate}<br></b>
                 ${tweet.text}
-            </div>
-            <div>
-                <a href="${pageContext.request.contextPath}/app/myTweets/update/${tweet.id}">Edytuj</a><br>
-                <a href="${pageContext.request.contextPath}/app/myTweets/delete/${tweet.id}"
-                    onclick="confirm('Czy na pewno chcesz usunąć wpis?')">Usuń</a><br>
             </div>
             <br>
             <div class="comments">
@@ -36,6 +35,7 @@
                         <a href="${pageContext.request.contextPath}/app/userProfile/${comment.user.id}">
                                 ${comment.user.firstName} ${comment.user.lastName}
                         </a></b><br>
+
                     ${comment.text}<br><br>
 
                 </c:forEach>

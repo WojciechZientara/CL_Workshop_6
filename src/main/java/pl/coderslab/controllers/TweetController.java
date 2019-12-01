@@ -66,5 +66,4 @@ public class TweetController {
         tweetRepository.delete(tweet);
         response.sendRedirect(request.getContextPath() + "/app/myTweets");
     }
-
 }

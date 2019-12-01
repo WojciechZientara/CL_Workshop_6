@@ -7,11 +7,14 @@
 
 <div id="main" class="mainFrame">
     <div id="tweetForm">
-        Edytuj Post: <form:form method="post" modelAttribute="tweet" >
-        <form:hidden path="user" value="${sessionScope.id}" />
-        <form:textarea path="text" rows="2" cols="70" id="tweetArea"/>
+        Od: ${message.sender.firstName} ${message.sender.lastName} <br>
+        Do: ${message.recipient.firstName} ${message.recipient.lastName} <br>
+        <form:form method="post" modelAttribute="message" >
+        <form:hidden path="sender" value="${message.sender.id}" />
+        <form:hidden path="recipient" value="${message.recipient.id}" />
+        <form:textarea path="text" rows="4" cols="100" id="tweetArea"/>
             <form:errors path="text" cssClass="error"/><br>
-        <input type="submit" value="Edytuj" class="submitBtn">
+        <input type="submit" value="Wyślij" class="submitBtn">
     </form:form>
     </div>
 </div>

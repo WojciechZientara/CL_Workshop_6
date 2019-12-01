@@ -7,12 +7,14 @@
 
 <div id="main" class="mainFrame">
     <div id="tweetForm">
-        Edytuj Post: <form:form method="post" modelAttribute="tweet" >
-        <form:hidden path="user" value="${sessionScope.id}" />
-        <form:textarea path="text" rows="2" cols="70" id="tweetArea"/>
-            <form:errors path="text" cssClass="error"/><br>
-        <input type="submit" value="Edytuj" class="submitBtn">
-    </form:form>
+
+        <c:set var = "fullDate" value = "${message.created}"/>
+        <c:set var = "shortDate" value = "${fn:substring(fullDate, 0, 10)}" />
+
+        Od: ${message.sender.firstName} ${message.sender.lastName} <br>
+        Do: ${message.recipient.firstName} ${message.recipient.lastName} <br>
+        Data: ${shortDate} <br>
+        ${message.text}
     </div>
 </div>
 

@@ -35,6 +35,12 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Tweet> tweets;
 
+    @OneToMany(mappedBy = "recipient")
+    private List<Message> sentMessages;
+
+    @OneToMany(mappedBy = "sender")
+    private List<Message> receivedMessages;
+
     public User() {
         this.tweets = new ArrayList<>();
     }
@@ -75,6 +81,22 @@ public class User {
         return BCrypt.checkpw(plainPassword, getPassword());
     }
 
+    public List<Message> getSentMessages() {
+        return sentMessages;
+    }
+
+    public void setSentMessages(List<Message> sentMessages) {
+        this.sentMessages = sentMessages;
+    }
+
+    public List<Message> getReceivedMessages() {
+        return receivedMessages;
+    }
+
+    public void setReceivedMessages(List<Message> receivedMessages) {
+        this.receivedMessages = receivedMessages;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -82,4 +104,14 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public List<Tweet> getTweets() {
+        return tweets;
+    }
+
+    public void setTweets(List<Tweet> tweets) {
+        this.tweets = tweets;
+    }
+
+
 }
