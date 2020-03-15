@@ -9,7 +9,7 @@ A simple posting and messaging web application
 * [Features](#features)
 <br><br>
 ## Intro
-A simple web application allowing users to publicate short posts, comments others' posts and send private messages over to other users.<br>
+A simple web application allowing users to publish short posts, comments others' posts and send private messages over to other users.<br>
 The application was built to drill Spring and Hibernate skills as one of the Coders Lab's 'Java Developer: Web' course workshop projects.
 <br><br>
 ## Screenshots
